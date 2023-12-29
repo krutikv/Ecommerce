@@ -1,0 +1,23 @@
+<div class="container">
+<div  class="p-3" style="font-size: 40px;">Cart <i class="bi bi-cart h2 "></i></div>
+<div *ngIf="cartisempty" class="h5 text-center p-5" style="font-size: 100px; color: rgb(176, 204, 223)">Cart Is Empty</div>
+<div *ngFor="let item of cart; let i = index" >
+    <div class="row m-3  rounded  p-3 shadow">
+    <div class="col-md-1">{{item.product_name}}</div>
+    <div class="col-md-2">{{'('+item.product_type + ')'}}</div>
+    <div class="col-md-2 text-primary">{{item.product_price + '$'}}</div>
+    <div class="col-md-4 h5 row">
+        <div class="col-md-3">Quantity</div>
+        <button class="col-md-1" style=" background: none;border: none; outline: none; box-shadow: none;" (click)="inc(i,item.product_id)"><i class="bi bi-plus p-1 border rounded"></i></button>
+        <div class="col-md-1 " style="padding-left: 25px;">{{ac[i]}}</div>
+        <button class="col-md-1" style=" background: none;border: none; outline: none; box-shadow: none;" (click)="dcr(i,item.product_id)"><i class="bi bi-dash-lg p-1 border rounded" ></i></button>
+    </div>
+    <div class="col-md-3 h5 text-primary">{{item.product_price*ac[i] + ' $'}}</div>
+</div></div>
+<hr *ngIf="!cartisempty">
+<div *ngIf="!cartisempty" class="row px-3">
+    <div class="col-md-8"></div>
+    <div class="col-md-2 h4 px-3 pt-1 text-primary">{{"Total : "+totalamount + "$"}}</div>
+    <div class="col-md-2 "><button class="btn btn-success">Proceed payment</button></div>
+</div>
+</div>

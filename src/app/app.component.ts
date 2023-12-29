@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { basicservice } from './basic.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'e-commerce';
+  title:string='ECommerce'
+  constructor(public basicservice:basicservice){}
 }

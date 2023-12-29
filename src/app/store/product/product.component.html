@@ -1,0 +1,18 @@
+
+<div class="container ">
+  <div *ngIf="massage"class="alert alert-success alert-dismissible fade show fixed-bottom" role="alert">
+    <strong>{{massage}}</strong> Added to your Cart.
+    <button type="button" class="btn-close" (click)="massagehide()" ></button>
+  </div>
+    <div class="row card-group">
+    <div *ngFor="let product of products" class="col-3">
+        <div class="card m-3 shadow bg-primary-subtle" style="width: 18rem;">
+            <img src={{product.product_img}} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{product.product_name}}</h5>
+              <p class="card-text">{{product.product_type}}</p>
+              <h5 class="card-text">{{product.product_price + "$"}}</h5>
+              <a  class="btn btn-primary" (click)="oncart(product.product_id)">Add To Cart</a>
+            </div>
+          </div></div></div>
+</div>
