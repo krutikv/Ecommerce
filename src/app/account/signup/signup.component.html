@@ -1,4 +1,4 @@
-<div  class="bg-secondary d-flex justify-content-center align-items-center" style="height: 1000px;">
+<div  class="bg-secondary d-flex justify-content-center align-items-center" style="height: 953px;">
 <div class="m-5 p-3 shadow-lg border col-md-3 rounded bg-primary-subtle">
     <div >
         <div class="d-inline"><button  (click)="onback()"  class=" btn btn-primary"><i class=" bi bi-arrow-left"></i></button></div>
@@ -6,6 +6,19 @@
         <div class="pt-3 form-group">
             <label>Username:</label>
             <input type="text" [(ngModel)]="username" class="form-control">
+        </div>
+        <div class="pt-3 form-group">
+            <label>Name:</label>
+            <input type="text" [(ngModel)]="name" class="form-control">
+        </div>
+        <div class="pt-3 form-group">
+            <label>Phone Number:</label>
+            <input type="number" [(ngModel)]="pnumber" class="form-control">
+        </div>
+        <div class="text-danger" *ngIf="pnumber?pnumber.toString().length != 10:false">Must be 10 digit</div>
+        <div class="pt-3 form-group">
+            <label>Address:</label>
+            <input type="text" [(ngModel)]="address" class="form-control">
         </div>
         <div class="form-group">
             <label>Password:</label>

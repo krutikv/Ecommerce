@@ -1,0 +1,21 @@
+<div class="card shadow p-5">
+    <div class=" row">
+        <div class="col-md-10">
+            <div class="h4">{{this.user?.name}}</div>
+            <div>{{this.user?.username}}</div>
+            <div class="h6">{{this.user?.address}}</div>
+            <div class="h6">{{this.user?.pnumber}}</div>
+        </div>
+        <div class="col-md-2" style="font-size: 70px;"><i class="bi bi-person-fill"></i></div>
+    </div><hr>
+    <div class="row">
+        <div class="col-md-4 m-5">
+            <div class="card shadow">
+                <div class="row p-3">
+                        <div class="col-md-8 h3">Total Orders:</div>
+                        <div class="col-md-4 h3">{{this.user?.order?.length}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

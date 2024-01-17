@@ -1,0 +1,25 @@
+<div class="card shadow p-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="my-3">
+                <div>Username:</div>
+                <input class="form-control" type="text" [(ngModel)]="username">
+            </div>
+            <div class="my-3">
+                <div>Name:</div>
+                <input class="form-control" type="text" [(ngModel)]="Name">
+            </div>
+            <div class="my-3">
+                <div>Address:</div>
+                <input class="form-control" type="text" [(ngModel)]="Address">
+            </div>
+            <div class="my-3">
+                <div>Phone Number:</div>
+                <input class="form-control" type="number" [(ngModel)]="PhoneNumber">
+            </div>
+            <div>
+                <button class="btn btn-primary my-3" (click)="updateprofile()">Update Profile</button>
+            </div>
+        </div>
+    </div>
+</div>

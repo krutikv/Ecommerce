@@ -1,5 +1,5 @@
-<div class="container">
-  <div *ngIf="message.length > 0" class=""> 
+<div class="h2">wishlist</div>
+<div *ngIf="message.length > 0" class=""> 
     <div *ngFor="let m of message">
       <div
         class="alert alert-success alert-dismissible fade show fixed-bottom "
@@ -8,11 +8,11 @@
         <strong>{{ m }}</strong> Added to your Cart.
       </div>
     </div>
-  </div>
-  <div class="row card-group">
+</div>
+<div class="row card-group">
     <div
       *ngFor="
-        let product of products | searchfilter : search | sortfilter : toggle | categoryfilter : category
+        let product of wishlist 
       "
       class="col-3"
     >
@@ -28,15 +28,8 @@
                 >Add To Cart</a>
               <button *ngIf="message.length > 0 && checkid.includes(product.product_id)" class="btn btn-success ">ADDED!</button>
             </div>
-            <div class="col-md-3">
-              <a *ngIf="!this.basicservice.wishlistid.includes(product.product_id)" class="h4" (click)="addtoWishlist(product.product_id)"><i class="bi bi-heart"></i></a>
-              <a *ngIf="this.basicservice.wishlistid.includes(product.product_id)" class="h4 text-danger" (click)="removeWishlist(product.product_id)"><i class="bi bi-heart-fill"></i></a>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-

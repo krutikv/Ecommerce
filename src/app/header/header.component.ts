@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { basicservice } from '../basic.service';
+import { basicservice } from '../services/basic.service';
 import { ActivatedRoute } from '@angular/router';
+import { accountservice } from '../services/account.service';
 
 @Component({
   selector: 'head-app',
@@ -10,12 +11,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class headComponent {
   loggedin:boolean=false;
-  constructor(public basicservice:basicservice,private route: ActivatedRoute) {
-}
+  constructor(public basicservice:basicservice,private route: ActivatedRoute,public accountservice:accountservice) { 
+  }
 ngOnInit(){
-  this.loggedin=this.basicservice.auth;
+  this.loggedin=this.accountservice.auth 
 }
   onAuth(){
-    this.basicservice.onAuths()
+    this.accountservice.onAuths();
   }
 }

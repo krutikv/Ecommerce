@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   //styleUrls: ['./frontpage.component.css']
 })
 export class frontpageComponent {
+  constructor(){}
 }

@@ -1,2 +1,36 @@
-<div class="h1 text-center">Store Section</div>
-<product></product>
+<div class="container">
+  <div class="row py-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <div class="input-group input-group-lg">
+        <span class="input-group-text shadow"><i class="bi bi-search"></i></span>
+        <input type="text" [(ngModel)]="productsearch" class="form-control shadow" placeholder="Search..."/>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div class="dropdown">
+        <button class="btn btn-primary shadow dropdown-toggle btn-lg" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <span *ngIf="!category">Category</span>{{category}}
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click)="catAll()">All</a></li>
+          <li><a class="dropdown-item" (click)="catA()">Type A</a></li>
+          <li><a class="dropdown-item" (click)="catB()">Type B</a></li>
+          <li><a class="dropdown-item" (click)="catC()">Type C</a></li>
+        </ul>
+      </div>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-1">
+    <div class="dropdown">
+      <button class="btn btn-success shadow dropdown-toggle btn-lg" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        filter
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="sortlth()">by price - low to high</a></li>
+        <li><a class="dropdown-item" (click)="sorthtl()">by price - high to low</a></li>
+      </ul>
+    </div>
+</div>
+</div>
+<product [search]="productsearch" [toggle]="toggle" [category]="category"></product>
