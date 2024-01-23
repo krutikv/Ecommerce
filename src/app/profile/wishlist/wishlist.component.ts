@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { basicservice } from '../../services/basic.service';
 import { productmodal } from 'src/app/modals/product.modal';
+import { accountservice } from '../../services/account.service';
+import { apiservice } from '../../services/api.service';
 
 @Component({
   selector: 'wishlist',
@@ -8,13 +10,22 @@ import { productmodal } from 'src/app/modals/product.modal';
   //styleUrls: ['./app.component.css']
 })
 export class wishlistComponent {
-  wishlist:productmodal[]=[]
-  message:string[]=[]
-  checkid:string=''
-  p1:productmodal|null=null
-  constructor(public basicservice:basicservice){}
+  wishlist:productmodal[]=[];
+  message:string[]=[];
+  checkid:string='';
+  wishlistisempty:boolean=true;
+  p1:productmodal|null=null;
+  constructor(public basicservice:basicservice,public accountservice:accountservice,public apiservice:apiservice){}
   ngOnInit(){
-    this.wishlist=this.basicservice.wishlist;
+    if(this.accountservice.user){this.wishlist=this.accountservice.user.wishlist;}
+    if(this.wishlist.length > 0){
+      this.wishlistisempty=false;
+    }else{
+      this.wishlistisempty=true;
+    }
+  }
+  onremove(id:string){
+    this.accountservice.removewishlist(id);
   }
   oncart(id:string){
     this.wishlist.find((p)=>{

@@ -1,35 +1,70 @@
+<div *ngIf="orderlistisempty" class="h5 text-center p-5" style="font-size: 100px; color: rgba(52, 66, 68, 0.336)">Orderlist Is Empty</div>
+<div *ngIf="!orderlistisempty">
 <div class="h2">Order History</div>
 <div class="m-5">
-    <div class="row text-center" style="font-weight: 500; font-size: 20px; color: grey;">
-        <div class="col-md ">Order Number</div>
-        <div class="col-md">Order Date</div>
-        <div class="col-md">Total Amount</div>
-        <div class="col-md" >Order Status</div>
-        <div class="col-md" ></div>
-    </div><hr>
-    <div *ngFor="let order of orders">
-        <div class="card shadow-sm m-2">
-            <div class="row text-center py-3">
-                <div class="col-md pt-2">{{order.order_number}}</div>
-                <div class="col-md pt-2">{{order.order_date | date : "dd-MM-YYYY (h:mm a)"}}</div>
-                <div class="col-md text-primary pt-2">{{"$"+order.order_amount}}</div>
-                <div class="col-md pt-2">{{order.order_status}}</div>
-                <div class="col-md">
-                   <button class="btn btn-primary" (click)="onDetails(order.order_number)">Details</button> 
-                </div>
-            </div>
-            <div class="row" *ngIf="seedetails == order.order_number && toggle"><span><hr></span>
-                <div class="col-2" *ngFor="let product of order.products">
-                    <div class="card m-3 shadow bg-primary-subtle" style="width: 10rem">
-                        <img src="{{ product.product_img }}" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                          <h5 class="card-title">{{ product.product_name }}</h5>
-                          <p class="card-text">{{ product.product_type }}</p>
-                          <h5 class="card-text">{{ product.product_price + "$" }}</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div
+    class="row text-center"
+    style="font-weight: 500; font-size: 20px; color: grey"
+  >
+    <div class="col-md">Order Number</div>
+    <div class="col-md">Order Date</div>
+    <div class="col-md">Total Amount</div>
+    <div class="col-md">Order Status</div>
+    <div class="col-md"></div>
+  </div>
+  <hr />
+  <div *ngFor="let order of orders">
+    <div class="card shadow-sm m-2">
+      <div class="row text-center py-3">
+        <div class="col-md pt-2">{{ order.order_number }}</div>
+        <div class="col-md pt-2">
+          {{ order.order_date | date : "dd-MM-YYYY (h:mm a)" }}
         </div>
+        <div class="col-md text-primary pt-2">
+          {{ "$" + order.order_amount }}
+        </div>
+        <div class="col-md pt-2">{{ order.order_status }}</div>
+        <div class="col-md">
+          <button
+            class="btn btn-primary"
+            (click)="onDetails(order.order_number)"
+          >
+            Details
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="seedetails == order.order_number && toggle">
+        <span><hr /></span>
+        <div class="col-2" *ngFor="let product of order.products">
+          <div
+            class="col-md-6 bg-danger text-light rounded-circle"
+            style="
+              width: 25px;
+              height: 25px;
+              text-align: center;
+              margin-left: 160px;
+              top: 20px;
+              z-index: 1;
+              position: relative;
+            "
+          >
+            {{ product.product_quantity }}
+          </div>
+          <div class="card mx-3 mb-3 shadow bg-primary-subtle" style="width: 10rem">
+            <img
+              src="{{ product.product_img }}"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.product_name }}</h5>
+              <p class="card-text">{{ product.product_type }}</p>
+              <h5 class="card-text">{{ product.product_price + "$" }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 </div>

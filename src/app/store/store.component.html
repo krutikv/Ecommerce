@@ -27,10 +27,14 @@
         filter
       </button>
       <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="sortdefault()">Default</a></li>
         <li><a class="dropdown-item" (click)="sortlth()">by price - low to high</a></li>
         <li><a class="dropdown-item" (click)="sorthtl()">by price - high to low</a></li>
       </ul>
     </div>
 </div>
 </div>
-<product [search]="productsearch" [toggle]="toggle" [category]="category"></product>
+<div *ngIf="productsearch" class="h2 mx-5 text-secondary">Following is a search result for " {{productsearch}} "...</div>
+<product [search]="productsearch"  [toggle]="toggle" [category]="category"></product>
+
+

@@ -25,4 +25,51 @@
       <a *ngIf="loggedin" [routerLink]="['profile']" class="text-dark"><i class="bi bi-person h2"></i></a>
     </nav>
   </header>
-  <router-outlet></router-outlet>
+  <div style="min-height: 80vh;">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <div class="px-4 pt-2 bg-primary-subtle">
+    <div class="container" style="margin-top: 50px; padding-bottom: 180px;">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="h5 row">SHOP</div>
+          <a class="row">Type A</a>
+          <a class="row">Type B</a>
+          <a class="row">Type c</a>
+        </div>
+        <div class="col-md-2 ">
+          <div class="h5 row">HELP</div>
+          <a  class="row">Contact Us</a>
+          <a  class="row">FAQ</a>
+          <a class="row">24/7 Support</a>
+        </div>
+        <div class="col-md-4 ">
+          <div class="h5 row">ABOUT</div>
+          <a class="row ">Our Story</a>
+          <a class="row">Careers</a>
+          <a class="row">Team</a>
+        </div>
+        <div class="col-md-4 row pt-3">
+          <form class="row" [formGroup]="emailForm">
+            <div class="col-md-8">
+              <input type="text" class="form-control rounded-pill" placeholder="Your Email Address" formControlName="email">
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-success rounded-pill" (click)="emailsend()" >Subscribe</button>
+            </div>
+          </form>
+          <span class="text-danger" *ngIf="emailForm.controls.email.errors?.['pattern']">Email Invalid</span>
+          <div class="col-md-7"></div>
+          <div class="col-md-5 pt-3">
+            <a href="https://www.instagram.com/ " class="text-danger"><i class="bi bi-instagram h3 mx-2"></i></a>
+            <a  href="https://www.facebook.com/"><i class="bi bi-facebook h3 mx-2"></i></a>
+            <a  href="https://twitter.com/?lang=en" class="text-dark"><i class="bi bi-twitter-x h3 mx-2"></i></a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    </div>
+  </footer>

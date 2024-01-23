@@ -15,7 +15,7 @@
     <div class="col-md-3 h5 text-primary">{{item.product_price*item.product_quantity + ' $'}}</div>
 </div></div>
 <hr *ngIf="!cartisempty">
-<div *ngIf="!cartisempty" class="row px-3">
+<div *ngIf="!cartisempty" class="row px-3 pb-5">
     <div class="col-md-8"></div>
     <div class="col-md-2 h4 px-3 pt-1 text-primary">{{"Total : "+totalamount + "$"}}</div>
     <div class="col-md-2 "><button class="btn btn-success" (click)="onpayment()">Proceed payment</button></div>

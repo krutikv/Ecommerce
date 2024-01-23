@@ -1,0 +1,60 @@
+<div class="container my-5">
+    <div class="card px-2 py-5 shadow">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="text-center"><img  src="{{ productdetails?.product_img }}" style="width: 400px; height:400px;"></div>
+                <div class="mx-4 my-5">
+                    <div class="h3 text-success">Reviews</div><hr>
+                    <div class="h4 text-center"  style="color: rgba(0, 0, 0, 0.493);">No reviews found</div>
+                </div>
+            </div>
+            <div class="col-md-6 row">
+                <div class="h3 col-md-3">{{productdetails?.product_name}}</div>
+                <div class="h5 col-md-2 mt-2" style="color: rgba(0, 0, 0, 0.493);">({{productdetails?.product_type}})</div>
+                <div class="row">
+                    <div class="text-primary h3 col-md-8">${{productdetails?.product_price}}</div>
+                    <div *ngIf="productdetails" class="h4 col-md-4">
+                        <span><i [ngClass]="productdetails.product_rating <1?'bi bi-star':'bi bi-star-fill text-warning'"></i></span>
+                      <span><i [ngClass]="productdetails.product_rating <2?'bi bi-star':'bi bi-star-fill text-warning'"></i></span>
+                      <span><i [ngClass]="productdetails.product_rating <3?'bi bi-star':'bi bi-star-fill text-warning '"></i></span>
+                      <span><i [ngClass]="productdetails.product_rating <4?'bi bi-star':'bi bi-star-fill text-warning '"></i></span>
+                      <span><i [ngClass]="productdetails.product_rating <5?'bi bi-star':'bi bi-star-fill text-warning '"></i></span>
+                      </div>
+                </div>
+                <hr>
+                <div class="my-4">
+                    <div class="h5">Delivery</div>
+                    <div>Free standard shipping on orders <span class="text-primary">over $200</span> before tax </div>
+                </div>  
+                <div class="row">
+                    <div class=" col-md-2 h5 mt-2">Quantity</div>
+                    <div class="col-md-2" *ngIf="this.productdetails"> 
+                        <input class="form-control" [(ngModel)]="quantity" type="number">
+                    </div>
+                    <div class="col-md-8"></div>
+                </div> 
+                <div class="row my-3">
+                    <button class="btn btn-success col-md-4 mx-3"><i class="bi bi-cart "></i> Add to cart</button> 
+                    <button class="btn btn-primary col-md-4  mx-3" *ngIf="!iswishlist" (click)="onaddwishlist()"><i class="bi bi-heart"></i> Wishlist</button>
+                    <button class="btn btn-danger col-md-4  mx-3" *ngIf="iswishlist" (click)="onremovewishlist()"><i class="bi bi-heart-fill"></i> Wishlisted</button> 
+                </div>
+                <div class="my-5">
+                    <div class="h5">Return</div>
+                    <div>You have <span class="text-primary">60 Days</span> to return the item(s) using any of the following methods: </div>
+                   <ul>
+                    <li>Free store return</li>
+                    <li>Free returns via Dropoff Service</li>
+                   </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 h4" style="color: rgba(0, 0, 0, 0.493);">
+                        share :
+                    </div>
+                    <a href="https://www.instagram.com/ " class="col-md-1"><i class="bi bi-instagram h4" style="color: rgba(0, 0, 0, 0.493);"></i></a>
+                    <a  href="https://www.facebook.com/" class="col-md-1"><i class="bi bi-facebook h4" style="color: rgba(0, 0, 0, 0.493);"></i></a>
+                    <a  href="https://twitter.com/?lang=en"class="col-md-1"><i class="bi bi-twitter-x h4" style="color: rgba(0, 0, 0, 0.493);"></i></a>
+                </div>                              
+            </div>
+        </div>    
+    </div>    
+</div>

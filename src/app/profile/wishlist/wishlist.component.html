@@ -1,11 +1,12 @@
-<div class="h2">wishlist</div>
+<div *ngIf="!wishlistisempty" class="h2">Wishlist</div>
+<div *ngIf="wishlistisempty" class="h5 text-center p-5" style="font-size: 100px; color: rgb(219, 165, 168)">Wishlist Is Empty</div>
 <div *ngIf="message.length > 0" class=""> 
     <div *ngFor="let m of message">
       <div
         class="alert alert-success alert-dismissible fade show fixed-bottom "
         role="alert"
       >
-        <strong>{{ m }}</strong> Added to your Cart.
+        <strong>{{ m }}</strong> Successfully added to your Cart.
       </div>
     </div>
 </div>
@@ -21,12 +22,15 @@
         <div class="card-body">
           <h5 class="card-title">{{ product.product_name }}</h5>
           <p class="card-text">{{ product.product_type }}</p>
-          <h5 class="card-text">{{ product.product_price + "$" }}</h5>
+          <h5 class="card-text">{{"$" + product.product_price   }}</h5>
           <div class="row">
             <div class="col-md-9">
               <a  *ngIf="!(message.length > 0) || !checkid.includes(product.product_id)" class="btn btn-primary" (click)="oncart(product.product_id)"
                 >Add To Cart</a>
               <button *ngIf="message.length > 0 && checkid.includes(product.product_id)" class="btn btn-success ">ADDED!</button>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger rounded-circle " aria-label="Close" (click)="onremove(product.product_id)"><i class="bi bi-trash"></i></button>
             </div>
           </div>
         </div>

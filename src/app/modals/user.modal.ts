@@ -7,13 +7,17 @@ export class usermodals {
     public name: string;
     public address:string;
     public pnumber:number;
-    public order:ordermodal[]
-    constructor(un: string, pass: string, name: string,address:string, pnumber:number,order:ordermodal[]) {
+    public email?:string;
+    public wishlist:productmodal[];
+    public order:ordermodal[];
+    constructor(un: string, pass: string, name: string,address:string, pnumber:number,order:ordermodal[],email:string,wl:productmodal[]) {
       this.username = un;
       this.password = pass;
       this.name=name;
       this.address=address;
       this.pnumber=pnumber;
       this.order=order;
+      this.email=email;
+      this.wishlist=wl
     }
   }

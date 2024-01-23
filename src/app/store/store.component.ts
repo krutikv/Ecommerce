@@ -9,10 +9,14 @@ import { basicservice } from '../services/basic.service';
 export class storeComponent {
   toggle:string=''
   category:string=''
-  constructor( public basicservice:basicservice){   }
+  constructor( public basicservice:basicservice){
+     }
    productsearch:string='';
    sortlth(){
     this.toggle='lth'
+   }
+   sortdefault(){
+    this.toggle=''
    }
    sorthtl(){
     this.toggle='htl';

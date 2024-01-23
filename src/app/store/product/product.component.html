@@ -1,3 +1,4 @@
+<div *ngIf="category || search" class="h5 mx-5 text-secondary"> {{this.basicservice.resultlength}} results found ...</div>
 <div class="container">
   <div *ngIf="message.length > 0" class=""> 
     <div *ngFor="let m of message">
@@ -9,28 +10,50 @@
       </div>
     </div>
   </div>
+  <div *ngIf="messagew.length > 0" class=""> 
+    <div *ngFor="let m of messagew">
+      <div
+        class="alert alert-danger alert-dismissible fade show fixed-bottom "
+        role="alert"
+      >
+        <strong>{{ m }}</strong> Successfully added to your wishlist.
+      </div>
+    </div>
+</div>
   <div class="row card-group">
     <div
       *ngFor="
-        let product of products | searchfilter : search | sortfilter : toggle | categoryfilter : category
+        let product of products | searchfilter : search | categoryfilter : category | sortfilter : toggle
       "
       class="col-3"
     >
       <div class="card m-3 shadow bg-primary-subtle" style="width: 18rem">
         <img src="{{ product.product_img }}" class="card-img-top" alt="..." />
         <div class="card-body">
-          <h5 class="card-title">{{ product.product_name }}</h5>
-          <p class="card-text">{{ product.product_type }}</p>
-          <h5 class="card-text">{{ product.product_price + "$" }}</h5>
           <div class="row">
-            <div class="col-md-9">
+            <h5 class="card-title col-md-10">{{ product.product_name }}</h5>
+            <div class="col-md-2">
+              <a *ngIf="!this.accountservice.user?.wishlist?.includes(product)" class="h4" (click)="addtoWishlist(product.product_id)"><i class="bi bi-heart"></i></a>
+              <a *ngIf="this.accountservice.user?.wishlist?.includes(product)" class="h4 text-danger" (click)="removeWishlist(product.product_id)"><i class="bi bi-heart-fill"></i></a>
+            </div>
+          </div>          
+          <p class="card-text">{{ product.product_type }}</p>
+          <h5 class="card-text">{{ "$" + product.product_price }}</h5>
+          <div class="my-3 h5">
+            <span><i [ngClass]="product.product_rating <1?'bi bi-star':'bi bi-star-fill text-warning'"></i></span>
+          <span><i [ngClass]="product.product_rating <2?'bi bi-star':'bi bi-star-fill text-warning'"></i></span>
+          <span><i [ngClass]="product.product_rating <3?'bi bi-star':'bi bi-star-fill text-warning '"></i></span>
+          <span><i [ngClass]="product.product_rating <4?'bi bi-star':'bi bi-star-fill text-warning '"></i></span>
+          <span><i [ngClass]="product.product_rating <5?'bi bi-star':'bi bi-star-fill text-warning '"></i></span>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
               <a  *ngIf="!(message.length > 0) || !checkid.includes(product.product_id)" class="btn btn-primary" (click)="oncart(product.product_id)"
                 >Add To Cart</a>
               <button *ngIf="message.length > 0 && checkid.includes(product.product_id)" class="btn btn-success ">ADDED!</button>
             </div>
-            <div class="col-md-3">
-              <a *ngIf="!this.basicservice.wishlistid.includes(product.product_id)" class="h4" (click)="addtoWishlist(product.product_id)"><i class="bi bi-heart"></i></a>
-              <a *ngIf="this.basicservice.wishlistid.includes(product.product_id)" class="h4 text-danger" (click)="removeWishlist(product.product_id)"><i class="bi bi-heart-fill"></i></a>
+            <div class="col-md-5">
+              <button class="btn btn-success" (click)="gotopagedetails(product.product_id)">Details</button>
             </div>
           </div>
         </div>
@@ -38,5 +61,11 @@
     </div>
   </div>
 </div>
+  <mat-paginator *ngIf="ispaginator" #paginator [length]="this.apiservice.productsapi.length"
+class="bg-success-subtle text-dark rounded-pill h5 my-5 shadow"
+            [pageSize]="12"
+            (page)="onChangePage($event)"
+            aria-label="Select page">
+</mat-paginator>
 
 

@@ -1,29 +1,18 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { usermodals } from '../modals/user.modal';
 import { productmodal } from '../modals/product.modal';
+import { accountservice } from './account.service';
 
 @Injectable({ providedIn: 'root' })
 export class basicservice {
+  resultlength:number=0
   product_number: number = 0;
   totalamount: number = 0;
-  wishlist:productmodal[]=[]
-  wishlistid:string[]=[]
   filterprd: productmodal[] = [];
   cart: productmodal[] = [];
   product: productmodal[] = [];
   cartisempty: boolean = false;
   p2: productmodal | undefined = undefined;
-  constructor() {}
-  addwishlist(w:productmodal){
-    this.wishlist.push(w)
-    this.wishlistid.push(w.product_id)
-  }
-  removewishlist(id:string){
-    let i = this.wishlist.findIndex((e)=> e.product_id==id)
-    this.wishlist.splice(i,1)
-    this.wishlistid.splice(i,1)
-  }
+  constructor(public accountservice:accountservice) {}
   clearcart() {
     this.product = [];
     this.cart = [];

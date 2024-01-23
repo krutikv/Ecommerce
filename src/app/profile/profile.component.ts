@@ -8,24 +8,26 @@ import { accountservice } from '../services/account.service';
   selector: 'profile',
   templateUrl: './profile.component.html',
   styles:[
-    '.nav-item:hover{ background-color:#8cb6d1}'
+    '.nav-item:hover{ background-color:#8cb6d1}',
   ]
 })
 export class profileComponent {
+  isactive:boolean=false
   user:usermodals|null=null
   data:string=''
     constructor(public basicservice:basicservice,public accountservice:accountservice,private router:Router, private  route:ActivatedRoute){
      
-    }
+    }    
     ngOnInit(){
         this.user=this.accountservice.user;
         this.ondashboard()
     }
     ondashboard(){
-      this.router.navigate(['dashboard'],{relativeTo:this.route})  
+      this.router.navigate(['dashboard'],{relativeTo:this.route}) 
     }
     onwish(){
-      this.router.navigate(['wishlist'],{relativeTo:this.route})  
+      this.router.navigate(['wishlist'],{relativeTo:this.route})
+  
     }
     onhis(){
       this.router.navigate(['orderhistory'],{relativeTo:this.route})  
