@@ -11,6 +11,9 @@ import { accountservice } from '../../services/account.service';
   //styleUrls: ['./app.component.css']
 })
 export class productdetailsComponent {
+   message:string[]=[]
+   messagew:string[]=[]
+   checkid:string=''
     quantity:number=1;
     iswishlist:boolean=false
     productdetails:productmodal|undefined=undefined;
@@ -21,10 +24,25 @@ export class productdetailsComponent {
         })
         if(this.productdetails && this.accountservice.user){
              this.iswishlist=this.accountservice.user.wishlist?.includes(this.productdetails)
-             console.log(this.iswishlist)
             }
      }
+     onaddtocart(){
+      if(this.productdetails){
+      this.message.push(this.productdetails.product_name);
+      setTimeout(() => {
+        this.message.splice(0,1);
+      }, 2000);
+         for(let i=0;i<this.quantity;i++){
+            this.basicservice.oncarts(this.productdetails);
+         }
+      } 
+     }
      onaddwishlist(){
+      if(this.productdetails){ this.messagew.push(this.productdetails.product_name);}
+      setTimeout(() => {
+        this.messagew.splice(0,1);
+      }, 2000);
+     
         this.iswishlist=true
         if(this.productdetails){this.accountservice.addwishlist(this.productdetails)}
      }

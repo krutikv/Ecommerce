@@ -1,3 +1,23 @@
+<div  *ngIf="message.length > 0" class=""> 
+    <div *ngFor="let m of message">
+      <div
+        class="alert alert-success m-5 alert-dismissible fade show fixed-bottom "
+        role="alert"
+      >
+        <strong>{{ m }}</strong> Added to your Cart.
+      </div>
+    </div>
+  </div>
+  <div *ngIf="messagew.length > 0" class=""> 
+    <div *ngFor="let m of messagew">
+      <div
+        class="alert alert-danger alert-dismissible fade show fixed-bottom "
+        role="alert"
+      >
+        <strong>{{ m }}</strong> Successfully added to your wishlist.
+      </div>
+    </div>
+</div>
 <div class="container my-5">
     <div class="card px-2 py-5 shadow">
         <div class="row">
@@ -29,12 +49,13 @@
                 <div class="row">
                     <div class=" col-md-2 h5 mt-2">Quantity</div>
                     <div class="col-md-2" *ngIf="this.productdetails"> 
-                        <input class="form-control" [(ngModel)]="quantity" type="number">
+                        <input class="form-control" [(ngModel)]="quantity" type="number" min="1">
                     </div>
                     <div class="col-md-8"></div>
                 </div> 
                 <div class="row my-3">
-                    <button class="btn btn-success col-md-4 mx-3"><i class="bi bi-cart "></i> Add to cart</button> 
+                    <button *ngIf="message.length > 0" class="btn btn-warning col-md-4 mx-3" (click)="onaddtocart()"><i class="bi bi-cart" ></i> Added</button> 
+                    <button *ngIf="message.length==0"  class="btn btn-success col-md-4 mx-3" (click)="onaddtocart()"><i class="bi bi-cart" ></i> Add to cart</button> 
                     <button class="btn btn-primary col-md-4  mx-3" *ngIf="!iswishlist" (click)="onaddwishlist()"><i class="bi bi-heart"></i> Wishlist</button>
                     <button class="btn btn-danger col-md-4  mx-3" *ngIf="iswishlist" (click)="onremovewishlist()"><i class="bi bi-heart-fill"></i> Wishlisted</button> 
                 </div>

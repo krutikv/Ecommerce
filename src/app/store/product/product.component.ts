@@ -55,7 +55,7 @@ products: productmodal[] =[];
       this.messagew.push(temp.product_name);
       setTimeout(() => {
         this.messagew.splice(0,1);
-      }, 1000);
+      }, 2000);
       this.accountservice.addwishlist(temp);} 
   }
   removeWishlist(id:string){
@@ -71,7 +71,7 @@ products: productmodal[] =[];
        this.message.push(this.p1.product_name);
       setTimeout(() => {
         this.message.splice(0,1);
-      }, 1000);
+      }, 2000);
       this.basicservice.oncarts(this.p1); 
        if(this.p1.product_id == id){
         this.checkid=id

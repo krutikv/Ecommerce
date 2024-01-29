@@ -7,5 +7,7 @@
    "
 >
 <div class="h1 p-5 text-center text-light" style="font-size: 100px;">home page</div>
-<div class="container text-light col-md-4 text-end fw-bold ">
-    <a class="text-light" [routerLink]="['../../login']">GO TO LOGIN PAGE -></a></div></div>
+<div *ngIf="!auth" class="container text-light col-md-4 text-end fw-bold ">
+    <a class="text-light" [routerLink]="['../../login']">GO TO LOGIN PAGE -></a>
+  </div>
+</div>

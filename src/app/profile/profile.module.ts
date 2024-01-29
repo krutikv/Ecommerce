@@ -6,11 +6,12 @@ import { editprofileComponent } from './editprofile/editprofile.component';
 import { wishlistComponent } from './wishlist/wishlist.component';
 import { trackComponent } from './track/track.component';
 import { orderhistoryComponent } from './orderhistory/orderhistory.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     profileRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   declarations: [

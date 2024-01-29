@@ -14,11 +14,8 @@ export class accountservice {
     this.apiservice.userdata.find((u)=>{
       if(u.username==this.user?.username){
         u.wishlist.push(w);
-        
-        //this.wishlistid.push(w.product_id)
       }
     })
-    //console.log(this.wishlistid)
   }
   removewishlist(id:string){
     
@@ -29,7 +26,6 @@ export class accountservice {
         this.wishlistid.splice(i,1)
       }
     })  
-   // console.log(this.wishlistid)
   }
   senduserdata(u: usermodals) {
     this.wishlistid=[]
@@ -51,12 +47,10 @@ export class accountservice {
     ps: string,
     psc: string,
     n: string,
-    pn: number | null,
-    adr: string
+    pn: string,
+    adr: string[]
   ) {
-    this.wishlistid=[]
-    if (un && ps && psc && n && pn && adr) {
-      if (pn.toString().length == 10) {
+    this.wishlistid=[] 
         let user: usermodals = {
           username: un,
           password: ps,
@@ -69,8 +63,6 @@ export class accountservice {
         let userexist = this.apiservice.userdata.find(
           (usere) => usere.username == un
         );
-        console.log(userexist);
-        console.log(this.apiservice.userdata);
         if (userexist) {
           alert('username already exist');
           this.router.navigate(['/login']);
@@ -82,13 +74,7 @@ export class accountservice {
           } else {
             alert('password mismatched');
           }
-        }
-      } else {
-        alert('number must be 10 digit');
-      }
-    } else {
-      alert('fill data properly');
-    }
+        }   
   }
   onflag(f: boolean) {
     this.auth = f;

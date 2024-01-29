@@ -24,7 +24,6 @@ export class orderhistoryComponent {
         }else{
           this.orderlistisempty=true
         }
-        console.log(this.orders)
     }
     }
     onDetails(num:number){

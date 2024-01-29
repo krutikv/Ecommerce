@@ -7,7 +7,7 @@
         <div class="col-md-10">
             <div class="h4">{{this.user?.name}}</div>
             <div class="text-decoration-underline">{{this.user?.username}}</div>
-            <div class="h6">{{this.user?.address}}</div>
+            <div class="h6" *ngFor="let address of this.user?.address">{{address}}</div>
             <div class="h6 text-primary">{{this.user?.pnumber}}</div>
             <div >{{this.user?.email}}</div>
         </div>

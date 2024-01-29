@@ -193,8 +193,8 @@ export class apiservice{
           username: 'krutik',
           password: '1234',
           name: 'krutik vaishnav',
-          pnumber: 1234567890,
-          address: 'ahmedabad',
+          pnumber: "1234567890",
+          address: ['ahmedabad'],
           order: [],
           wishlist:[]
         },
@@ -202,8 +202,8 @@ export class apiservice{
           username: 'abc',
           password: '1234',
           name: 'abc',
-          pnumber: 1234567890,
-          address: 'ahmedabad',
+          pnumber: "1234567890",
+          address: ['ahmedabad'],
           order: [],
           wishlist:[]
         },
@@ -211,8 +211,8 @@ export class apiservice{
           username: 'def',
           password: '1234',
           name: 'def',
-          pnumber: 1234567890,
-          address: 'ahmedabad',
+          pnumber: "1234567890",
+          address: ['ahmedabad'],
           order: [],
           wishlist:[]
         },
@@ -220,8 +220,8 @@ export class apiservice{
           username: 'hij',
           password: '1234',
           name: 'krutik vaishnav',
-          pnumber: 1234567890,
-          address: 'ahmedabad',
+          pnumber: "1234567890",
+          address: ['ahmedabad'],
           order: [],
           wishlist:[]
         },

@@ -1,21 +1,42 @@
 <div class="card shadow p-5">
     <div class="row">
-        <div class="col-md-8">
+        <div [formGroup]="editform" class="col-md-8">
             <div class="my-3">
                 <div>Username:</div>
-                <input class="form-control" type="text" [(ngModel)]="username">
+                <input class="form-control" type="text" formControlName="username">
+                <span class="text-danger" *ngIf="editform.controls.username.touched && !editform.controls.username.valid">username not valid,</span>
+                <span *ngIf="editform.controls.username.errors?.['minlength'] && editform.controls.username.touched" class="text-danger">(username length must be 3-10)</span>
             </div>
             <div class="my-3">
                 <div>Name:</div>
-                <input class="form-control" type="text" [(ngModel)]="Name">
+                <input class="form-control" type="text" formControlName="name">
+                <span class="text-danger" *ngIf="editform.controls.name.touched && !editform.controls.name.valid">required field</span>
             </div>
             <div class="my-3">
-                <div>Address:</div>
-                <input class="form-control" type="text" [(ngModel)]="Address">
+                <div class="row" formArrayName="address"> 
+                    <div class="form-group col-md-11" *ngFor="let addr of classmates.controls;let i=index">
+                        <div>Address {{i+1}}:</div>
+                        <div class="row">
+                            <div class="col-md-11"><input type="text" class="form-control" [formControlName]="i"></div>
+                            <div class="col-md-1"><button type="button" class="btn btn-light border shadow-sm" (click)="deleteaddr(i)"
+                                style="z-index: 1;position: relative;margin-left: -66px;background-color: #ef2f2f47;">
+                                <i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>                        
+                        <span class="text-danger" *ngIf=" editform.get('address')?.get(''+i)?.touched && editform.get('address')?.get(''+i)?.invalid">required field</span>   
+                    </div>                        
+                    <div class="col-md-1">
+                        <button class="btn btn-primary rounded-circle col-md-1 shadow" (click)="moreaddr()" style="width:50px; padding-left: 10px; margin-bottom:20px;margin-top: 17px;">
+                            <i class="bi bi-plus h3"></i>
+                        </button>
+                    </div>                                                                                     
+                </div>
             </div>
             <div class="my-3">
                 <div>Phone Number:</div>
-                <input class="form-control" type="number" [(ngModel)]="PhoneNumber">
+                <input class="form-control" type="text" formControlName="pnumber">
+                <span class="text-danger" *ngIf="editform.controls.pnumber.touched && !editform.controls.pnumber.valid">required field,</span>
+                <span class="text-danger" *ngIf="editform.controls.pnumber.touched && this.editform.controls.pnumber.value?.length != 10">(Must be 10 digit)</span>
             </div>
             <div>
                 <button class="btn btn-success my-3" (click)="updateprofile()">Update Profile</button>

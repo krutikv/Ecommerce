@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { accountservice } from '../services/account.service';
 
 @Component({
   selector: 'frontpage',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   //styleUrls: ['./frontpage.component.css']
 })
 export class frontpageComponent {
-  constructor(){}
+  auth:boolean=false
+  constructor(public accountservice:accountservice){
+    this.auth=this.accountservice.auth
+  }
 }

@@ -5,12 +5,12 @@ export class usermodals {
     public username: string;
     public password: string;
     public name: string;
-    public address:string;
-    public pnumber:number;
+    public address:string[];
+    public pnumber:string;
     public email?:string;
     public wishlist:productmodal[];
     public order:ordermodal[];
-    constructor(un: string, pass: string, name: string,address:string, pnumber:number,order:ordermodal[],email:string,wl:productmodal[]) {
+    constructor(un: string, pass: string, name: string,address:string[], pnumber:string,order:ordermodal[],email:string,wl:productmodal[]) {
       this.username = un;
       this.password = pass;
       this.name=name;
