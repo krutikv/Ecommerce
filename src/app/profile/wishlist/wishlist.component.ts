@@ -22,10 +22,11 @@ export class wishlistComponent {
       this.wishlistisempty=false;
     }else{
       this.wishlistisempty=true;
-    }
+    } 
   }
   onremove(id:string){
     this.accountservice.removewishlist(id);
+    this.wishlist=this.accountservice.user.wishlist;
   }
   oncart(id:string){
     this.wishlist.find((p)=>{

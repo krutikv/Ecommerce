@@ -2,6 +2,7 @@ import { ordermodal } from "./order.modal";
 import { productmodal } from "./product.modal";
 
 export class usermodals {
+  public id?:number;
     public username: string;
     public password: string;
     public name: string;
@@ -10,7 +11,8 @@ export class usermodals {
     public email?:string;
     public wishlist:productmodal[];
     public order:ordermodal[];
-    constructor(un: string, pass: string, name: string,address:string[], pnumber:string,order:ordermodal[],email:string,wl:productmodal[]) {
+    constructor(un: string, pass: string, name: string,address:string[], pnumber:string,order:ordermodal[],email:string,wl:productmodal[],i:number) {
+      this.id=i;
       this.username = un;
       this.password = pass;
       this.name=name;

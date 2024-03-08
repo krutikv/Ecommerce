@@ -1,0 +1,5 @@
+  <div class="form-check form-switch">
+    <input class="form-check-input h5" style="margin-top: 10px;" [checked]="darkMode$" (change)="onToggle()"type="checkbox">
+    <label *ngIf="isactive" class="form-check-label h5 mt-2" for="flexSwitchCheckDefault"><i class="bi bi-moon-fill"></i></label>
+    <label *ngIf="!isactive" class="form-check-label h5 mt-2" for="flexSwitchCheckDefault"><i class="bi bi-sun-fill h4" style="color: #f8b82e;"></i></label>
+  </div>

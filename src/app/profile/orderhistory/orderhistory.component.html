@@ -1,10 +1,10 @@
 <div *ngIf="orderlistisempty" class="h5 text-center p-5" style="font-size: 100px; color: rgba(52, 66, 68, 0.336)">Orderlist Is Empty</div>
 <div *ngIf="!orderlistisempty">
-<div class="h2">Order History</div>
+<div class="h2 white-text">Order History</div>
 <div class="m-5">
   <div
-    class="row text-center"
-    style="font-weight: 500; font-size: 20px; color: grey"
+    class="row text-center white-text "
+    
   >
     <div class="col-md">Order Number</div>
     <div class="col-md">Order Date</div>
@@ -12,9 +12,9 @@
     <div class="col-md">Order Status</div>
     <div class="col-md"></div>
   </div>
-  <hr />
+  <hr class="white-text" />
   <div *ngFor="let order of orders">
-    <div class="card shadow-sm m-2">
+    <div class="card shadow-sm m-2 back-dark">
       <div class="row text-center py-3">
         <div class="col-md pt-2">{{ order.order_number }}</div>
         <div class="col-md pt-2">

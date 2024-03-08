@@ -1,8 +1,8 @@
 <div class="container">
-<div  class="p-3" style="font-size: 40px;">Cart <i class="bi bi-cart h2 "></i></div>
+<div  class="p-3 white-text" style="font-size: 40px;">Cart <i class="bi bi-cart h2 "></i></div>
 <div *ngIf="cartisempty" class="h5 text-center p-5" style="font-size: 100px; color: rgb(176, 204, 223)">Cart Is Empty</div>
 <div *ngFor="let item of cart | sortfilter : 'lth'; let i = index" >
-    <div class="row m-3  rounded  p-3 shadow">
+    <div class="row m-3 back-dark rounded  p-3 shadow">
     <div class="col-md-1">{{item.product_name}}</div>
     <div class="col-md-2">{{'('+item.product_type + ')'}}</div>
     <div class="col-md-2 text-primary">{{item.product_price+ '$'}}</div>
@@ -14,10 +14,10 @@
     </div>
     <div class="col-md-3 h5 text-primary">{{item.product_price*item.product_quantity + ' $'}}</div>
 </div></div>
-<hr *ngIf="!cartisempty">
+<hr *ngIf="!cartisempty" class="sec-text">
 <div *ngIf="!cartisempty" class="row px-3 pb-5">
     <div class="col-md-8"></div>
-    <div class="col-md-2 h4 px-3 pt-1 text-primary">{{"Total : "+totalamount + "$"}}</div>
+    <div class="col-md-2 h4 px-3 pt-1 text-primary white-text">{{"Total : "+totalamount + "$"}}</div>
     <div class="col-md-2 "><button class="btn btn-success" (click)="onpayment()">Proceed payment</button></div>
 </div>
 </div>

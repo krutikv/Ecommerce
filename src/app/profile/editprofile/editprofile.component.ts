@@ -4,6 +4,7 @@ import { usermodals } from 'src/app/modals/user.modal';
 import { apiservice } from '../../services/api.service';
 import { accountservice } from 'src/app/services/account.service';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PopupService } from '../../services/popup.service';
 @Component({
   selector: 'editprofile',
   templateUrl: './editprofile.component.html',
@@ -25,7 +26,7 @@ export class editprofileComponent {
     address:new FormArray([
     ])
   });
-    constructor(public basicservice:basicservice,public apiservice:apiservice,public accountservice:accountservice){}
+    constructor(public basicservice:basicservice,public apiservice:apiservice,public accountservice:accountservice,private PopupService:PopupService){}
     ngOnInit(){
       if(this.accountservice.user){
       this.editform.patchValue({  
@@ -63,13 +64,13 @@ export class editprofileComponent {
       if(this.editform.controls.pnumber.value){this.pnumber=this.editform.controls.pnumber.value ;}
       for(let j=0;j<this.classmates.length;j++){
         this.i= ''+j
-        if(this.childform.value){this.address.push(this.childform.value)}
+        if(!this.address.includes(this.childform.value)){this.address.push(this.childform.value)}
       }
       if(this.username && this.address && this.name && this.pnumber && this.editform.valid){
         if(this.classmates.length != 0){
           if(this.accountservice.user){
             let temp = this.apiservice.userdata.find((u)=>{
-              return u.username == this.username ;
+              return u.username == this.username;
             })
             if(temp){
               this.existance=true;
@@ -81,21 +82,18 @@ export class editprofileComponent {
             this.accountservice.user.username=this.username;
             this.accountservice.user.address=this.address;
             this.accountservice.user.pnumber=this.pnumber;
-            this.apiservice.userdata.find((u)=>{
-              if(u.username == this.fixedun && this.accountservice.user){
-                u=this.accountservice.user;
-              }
-            })
-            alert("updated!!")
+            localStorage.setItem('user',JSON.stringify(this.accountservice.user))
+              this.apiservice.updateuser(this.accountservice.user);            
+            this.PopupService.openPopup('Profile','Successfully updated!!');
           }else{
-            alert('username already exist')
+            this.PopupService.openPopup('Profile','Username already exist');
           }
           }               
         }else{
-          alert("add atleast 1 address")
+          this.PopupService.openPopup('Profile','Add atleast 1 address');
         }
       }else{
-        alert('fill data properly')
+        this.PopupService.openPopup('Profile','Fill data properly');
       }
     }
 }

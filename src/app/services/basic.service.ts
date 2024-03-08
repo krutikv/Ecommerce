@@ -5,7 +5,7 @@ import { accountservice } from './account.service';
 @Injectable({ providedIn: 'root' })
 export class basicservice {
   resultlength:number=0
-  product_number: number = 0;
+  product_number:number=JSON.parse(localStorage.getItem('order_number')!);
   totalamount: number = 0;
   filterprd: productmodal[] = [];
   cart: productmodal[] = [];
@@ -83,7 +83,9 @@ export class basicservice {
     this.cartisempty = false;
     this.product.push(p);
   }
-  oninc() {
-    return (this.product_number += 1);
+  oninc(){
+    this.product_number+=1;
+    localStorage.setItem('order_number',JSON.stringify(this.product_number))
+    return (this.product_number);
   }
 }

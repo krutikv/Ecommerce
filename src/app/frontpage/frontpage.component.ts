@@ -9,6 +9,6 @@ import { accountservice } from '../services/account.service';
 export class frontpageComponent {
   auth:boolean=false
   constructor(public accountservice:accountservice){
-    this.auth=this.accountservice.auth
+    this.auth=JSON.parse(localStorage.getItem('token')!)
   }
 }

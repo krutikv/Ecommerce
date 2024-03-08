@@ -1,4 +1,5 @@
 export class productmodal{
+    public id:number;
     public product_id : string;
     public product_name : string;
     public product_img : string;
@@ -6,8 +7,9 @@ export class productmodal{
     public product_type : string;
     public product_quantity:number;
     public product_rating:number;
-    constructor( id : string,name : string,img : string,price : number,type : string, qnt:number , r:number){
+    constructor( id : string,name : string,img : string,price : number,type : string, qnt:number , r:number,i:number){
         this.product_id = id;
+        this.id=i;
         this.product_img = img;
         this.product_name = name;
         this.product_price = price;

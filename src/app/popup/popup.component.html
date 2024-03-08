@@ -1,0 +1,14 @@
+<div >
+  <h1 mat-dialog-title>{{title}}</h1><hr style="padding-right: 510px;">
+  <div mat-dialog-content>
+    <p>{{content}}</p>
+  </div>
+  <div mat-dialog-actions>
+    <button *ngIf="title=='SignUp'" mat-button (click)="confirmDialog()" class="btn btn-primary" >
+      Go anyway
+    </button>
+    <button mat-button (click)="closeDialog()" class="btn btn-primary" >
+        Close
+      </button>
+  </div>
+</div>

@@ -19,7 +19,7 @@
     </div>
 </div>
 <div class="container my-5">
-    <div class="card px-2 py-5 shadow">
+    <div class="card px-2 py-5 shadow back-dark">
         <div class="row">
             <div class="col-md-6 ">
                 <div class="text-center"><img  src="{{ productdetails?.product_img }}" style="width: 400px; height:400px;"></div>
@@ -56,8 +56,8 @@
                 <div class="row my-3">
                     <button *ngIf="message.length > 0" class="btn btn-warning col-md-4 mx-3" (click)="onaddtocart()"><i class="bi bi-cart" ></i> Added</button> 
                     <button *ngIf="message.length==0"  class="btn btn-success col-md-4 mx-3" (click)="onaddtocart()"><i class="bi bi-cart" ></i> Add to cart</button> 
-                    <button class="btn btn-primary col-md-4  mx-3" *ngIf="!iswishlist" (click)="onaddwishlist()"><i class="bi bi-heart"></i> Wishlist</button>
-                    <button class="btn btn-danger col-md-4  mx-3" *ngIf="iswishlist" (click)="onremovewishlist()"><i class="bi bi-heart-fill"></i> Wishlisted</button> 
+                    <button class="btn btn-primary col-md-4  mx-3" *ngIf="!accountservice.liked(productdetails!.product_id)" (click)="onaddwishlist()"><i class="bi bi-heart"></i> Wishlist</button>
+                    <button class="btn btn-danger col-md-4  mx-3" *ngIf="accountservice.liked(productdetails!.product_id)" (click)="onremovewishlist()"><i class="bi bi-heart-fill"></i> Wishlisted</button> 
                 </div>
                 <div class="my-5">
                     <div class="h5">Return</div>

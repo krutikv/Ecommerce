@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { accountservice } from '../services/account.service';
 import { apiservice } from '../services/api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PopupService } from '../services/popup.service';
 
 @Component({
   selector: 'head-app',
@@ -18,18 +19,18 @@ export class headComponent {
   emailForm=new FormGroup({
     email:new FormControl('',[Validators.required,Validators.pattern(this.check)])
   })
-  constructor(public basicservice:basicservice,private route: ActivatedRoute,public accountservice:accountservice,public apiservice:apiservice) { 
+  constructor(public basicservice:basicservice,private route: ActivatedRoute,public accountservice:accountservice,public apiservice:apiservice,private PopupService:PopupService) { 
   }
 ngOnInit(){
-  this.loggedin=this.accountservice.auth 
+  this.loggedin=JSON.parse(localStorage.getItem('token')!) 
 }
 emailsend(){
   if(this.emailForm.controls.email.value && this.emailForm.controls.email.valid){
     this.email=this.emailForm.controls.email.value
     this.accountservice.sendemail(this.email)
-    alert("email successfully updated")
+    this.PopupService.openPopup('Email','Successfully Updated');
   }else{
-    alert("email invalid")
+    this.PopupService.openPopup('Email','Email Invalid');
   }
 }
   onAuth(){

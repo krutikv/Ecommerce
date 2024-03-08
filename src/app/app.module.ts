@@ -23,35 +23,47 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { RouterModule } from '@angular/router';
 import { productdetailsComponent } from './store/productdetails/productdetails.component';
 import { CommonModule } from '@angular/common';
+import { popupComponent } from './popup/popup.component';
+import { PopupService } from './services/popup.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductListResolveService } from './services/ProductListResolveGuardService';
+import { loaderComponent } from './loader/loader.component';
+import { DarkModeToggle } from './darkmode/darkmode.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    headComponent,
-    aboutComponent,
-    loginComponent,
-    signupComponent,
-    frontpageComponent,
-    storeComponent,
-    cartComponent,
-    productdetailsComponent,
-    productComponent,
-    profileComponent,
-    searchPipe,
-    categoryPipe,
-    sortPipe
-  ],
-  imports: [
-    ReactiveFormsModule,
-    CommonModule  ,
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatPaginatorModule,
-  ],
-  providers: [basicservice,apiservice,accountservice],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        headComponent,
+        aboutComponent,
+        loginComponent,
+        signupComponent,
+        frontpageComponent,
+        storeComponent,
+        cartComponent,
+        productdetailsComponent,
+        productComponent,
+        profileComponent,
+        popupComponent,
+        searchPipe,
+        categoryPipe,
+        sortPipe,
+        DarkModeToggle
+    ],
+    providers: [basicservice, apiservice, accountservice, PopupService, ProductListResolveService],
+    bootstrap: [AppComponent],
+    imports: [
+        ReactiveFormsModule,
+        CommonModule,
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatPaginatorModule,
+        MatDialogModule,
+        HttpClientModule,
+        loaderComponent
+    ]
 })
 export class AppModule { }

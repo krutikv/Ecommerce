@@ -1,4 +1,4 @@
-<div *ngIf="category || search" class="h5 mx-5 text-secondary"> {{this.basicservice.resultlength}} results found ...</div>
+<div *ngIf="category || search" class="h5 mx-5 sec-text white-text"> {{this.basicservice.resultlength}} results found ...</div>
 <div class="container">
   <div *ngIf="message.length > 0" class=""> 
     <div *ngFor="let m of message">
@@ -31,10 +31,10 @@
         <img src="{{ product.product_img }}" class="card-img-top" alt="..." />
         <div class="card-body">
           <div class="row">
-            <h5 class="card-title col-md-10">{{ product.product_name }}</h5>
+            <h5 class="card-title col-md-10">{{ product.product_name}}</h5>
             <div class="col-md-2">
-              <a *ngIf="!this.accountservice.user?.wishlist?.includes(product)" class="h4" (click)="addtoWishlist(product.product_id)"><i class="bi bi-heart"></i></a>
-              <a *ngIf="this.accountservice.user?.wishlist?.includes(product)" class="h4 text-danger" (click)="removeWishlist(product.product_id)"><i class="bi bi-heart-fill"></i></a>
+              <a *ngIf="!accountservice.liked(product.product_id)" class="h4" (click)="addtoWishlist(product.product_id)"><i class="bi bi-heart"></i></a>
+              <a *ngIf="accountservice.liked(product.product_id)" class="h4 text-danger" (click)="removeWishlist(product.product_id)"><i class="bi bi-heart-fill"></i></a>
             </div>
           </div>          
           <p class="card-text">{{ product.product_type }}</p>

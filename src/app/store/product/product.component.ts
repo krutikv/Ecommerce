@@ -4,7 +4,7 @@ import { basicservice } from '../../services/basic.service';
 import { usermodals } from 'src/app/modals/user.modal';
 import { apiservice } from '../../services/api.service';
 import { PageEvent } from '@angular/material/paginator';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Route } from '@angular/router';
 import { accountservice } from '../../services/account.service';
 @Component({
   selector: 'product',
@@ -23,7 +23,9 @@ export class productComponent {
   wishlistadded:boolean=false;
   haswishlist:string[]=[];
 products: productmodal[] =[];
-  constructor(public basicservice:basicservice,public apiservice:apiservice,private router: Router,public accountservice:accountservice,public ActivatedRoute:ActivatedRoute){
+  constructor(public basicservice:basicservice,public apiservice:apiservice,private router: Router,public Route:ActivatedRoute, public accountservice:accountservice,public ActivatedRoute:ActivatedRoute){
+    this.products=this.Route.snapshot.data['products'];
+    this.apiservice.productsapi=this.products
   }
   ngOnChanges(){ 
     if(this.search || this.toggle || this.category){
@@ -33,8 +35,8 @@ products: productmodal[] =[];
       this.ispaginator=true
       this.products=this.apiservice.fetchdata(0,1);
     }
-    let temp=[...this.products]
-    this.products=temp
+    let temp=[...this.products];
+    this.products=temp;
   }
   gotopagedetails(id:string){
     this.router.navigate(['product'],{queryParams:{id:id},relativeTo:this.ActivatedRoute})
@@ -61,6 +63,7 @@ products: productmodal[] =[];
   removeWishlist(id:string){
     this.accountservice.removewishlist(id);
   }
+ 
   oncart(id:string){
     this.products.find((p)=>{
       if(p.product_id == id){
